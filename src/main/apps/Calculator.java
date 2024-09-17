@@ -4,6 +4,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 
 public class Calculator {
@@ -47,6 +49,7 @@ public class Calculator {
         frame.add(leftOpField);
         frame.add(rightOpField);
         frame.add(resultLabel);
+        frame.setLayout(new GridLayout());
         frame.setVisible(true);
     }
 
@@ -62,6 +65,7 @@ public class Calculator {
     }
 
     private void initializeResults() {
+        resultLabel = new JLabel();
         JPanel resultPanel = new JPanel();
         resultPanel.add(resultLabel);
         frame.add(resultPanel);
