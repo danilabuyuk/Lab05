@@ -34,7 +34,7 @@ public class Calculator {
 
     private void createFrame() {
         frame = new JFrame(NAME);
-        frame.setLayout(new BorderLayout());
+        frame.setLayout(new BorderLayout(10, 10));
         frame.setSize(WIDTH, HEIGHT);
         frame.setLocation(X_LOC, Y_LOC);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,51 +51,61 @@ public class Calculator {
         frame.add(rightOpField);
         frame.add(resultLabel);*/
         //frame.setLayout(new BorderLayout());
+        frame.pack();
         frame.setVisible(true);
     }
 
     private void initializeInputs() {
-        leftOpField = new JTextField(5);
-        rightOpField = new JTextField(5);
+        leftOpField = new JTextField(10);
+        rightOpField = new JTextField(10);
         leftOpField.setName("leftOperand");
         rightOpField.setName("rightOperand");
-        JPanel inputPanel = new JPanel(new BorderLayout());
+        JPanel inputPanel = new JPanel();
         inputPanel.setName("inputPanel");
-        inputPanel.add(leftOpField, BorderLayout.EAST);
-        inputPanel.add(rightOpField, BorderLayout.WEST);
+        inputPanel.add(leftOpField);
+        inputPanel.add(rightOpField);
         frame.add(inputPanel, BorderLayout.NORTH);
     }
 
     private void initializeResults() {
         resultLabel = new JLabel(RESULT_PREAMBLE);
         resultLabel.setName("resultLabel");
-        JPanel resultPanel = new JPanel(new BorderLayout());
+        JPanel resultPanel = new JPanel();
         resultPanel.setName("resultPanel");
-        resultPanel.add(resultLabel, BorderLayout.CENTER);
-        frame.add(resultPanel, BorderLayout.AFTER_LINE_ENDS);
+        resultPanel.add(resultLabel);
+        frame.add(resultPanel, BorderLayout.CENTER);
     }
 
     private void initializeButtons() {
         JButton addButton = new JButton("ADD");
             addButton.setName("addButton");
+            addButton.setSize(100, 50);
         JButton subButton = new JButton("SUB");
             subButton.setName("subButton");
+            subButton.setSize(100, 50);
         JButton multButton = new JButton("MULT");
-        multButton.setName("multButton");
+            multButton.setName("multButton");
+            multButton.setSize(100, 50);
         JButton divButton = new JButton("DIV");
-        divButton.setName("divButton");
+            divButton.setName("divButton");
+            divButton.setSize(100, 50);
         
         addButton.addActionListener(e -> addButtonPressed(e));
         subButton.addActionListener(e -> subButtonPressed(e));
         multButton.addActionListener(e -> multButtonPressed(e));
         divButton.addActionListener(e -> divButtonPressed(e));
 
-        JPanel buttonPanel = new JPanel(new BorderLayout());
+        JPanel buttonPanel = new JPanel();
+            buttonPanel.setSize(400, 50);
+        //JPanel buttonPanel2 = new JPanel(new BorderLayout(10, 10));
+        //JPanel buttonPanel3 = new JPanel(new BorderLayout(10, 10));
         buttonPanel.setName("buttonPanel");
-        buttonPanel.add(addButton, BorderLayout.EAST);
-        buttonPanel.add(subButton, BorderLayout.NORTH);
-        buttonPanel.add(multButton, BorderLayout.SOUTH);
-        buttonPanel.add(divButton, BorderLayout.WEST);
+        buttonPanel.add(addButton/* , BorderLayout.EAST */);
+        buttonPanel.add(subButton/* , BorderLayout.CENTER */);
+        buttonPanel.add(multButton/* , BorderLayout.NORTH */);
+        buttonPanel.add(divButton/* , BorderLayout.WEST */);
+        //buttonPanel3.add(buttonPanel, BorderLayout.EAST);
+        //buttonPanel3.add(buttonPanel2, BorderLayout.WEST);
         frame.add(buttonPanel, BorderLayout.SOUTH);
     }
 
